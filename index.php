@@ -52,7 +52,7 @@ $hotels = [
     <title>PHP Hotel</title>
 </head>
 <body>
-    <ul>
+    <!-- <ul>
         <?php foreach($hotels as $key => $hotel): ?>
         <li>
             <?php echo $hotel['name'] ?> -
@@ -62,32 +62,32 @@ $hotels = [
             <?php echo $hotel['distance_to_center'] ?>
         </li>
         <?php endforeach; ?>
-    </ul>
+    </ul> -->
+<div class="container py-5">
+    <table class="table bg-warning">
+        <h1 class="text-center text-danger">Hotels</h1>
+        <thead>
+            <tr class="bg-danger">
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Parking</th>
+            <th scope="col">Vote</th>
+            <th scope="col">Distance to Centre</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach($hotels as $key => $hotel): ?>
+            <tr>
+            <td><?php echo $hotel['name'] ?></td>
+            <td><?php echo $hotel['description'] ?></td>
+            <td><?php echo ($hotel['parking'] === true) ? "yes" : "no"; ?></td>
+            <td><?php echo $hotel['vote'] ?></td>
+            <td><?php echo $hotel['distance_to_center'] ?> km</td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
-    <h2>TAB</h2>
-
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Parking</th>
-      <th scope="col">Vote</th>
-      <th scope="col">Distance to Centre</th>
-    </tr>
-  </thead>
-  <tbody>
-  <?php foreach($hotels as $key => $hotel): ?>
-    <tr>
-      <td><?php echo $hotel['name'] ?></td>
-      <td><?php echo $hotel['description'] ?></td>
-      <td><?php echo ($hotel['parking'] === true) ? "yes" : "no"; ?></td>
-      <td><?php echo $hotel['vote'] ?></td>
-      <td><?php echo $hotel['distance_to_center'] ?> km</td>
-    </tr>
-
-    <?php endforeach; ?>
-  </tbody>
-</table>
+</div>
 </body>
 </html>
