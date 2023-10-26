@@ -52,6 +52,8 @@ $hotels = [
     <title>PHP Hotel</title>
 </head>
 <body>
+
+<!-- STAMPA SEMPLICE  -->
     <!-- <ul>
         <?php foreach($hotels as $key => $hotel): ?>
         <li>
@@ -63,6 +65,25 @@ $hotels = [
         </li>
         <?php endforeach; ?>
     </ul> -->
+
+<!-- FORM  -->
+<div class="container py-5 ">
+    <form action="index.php" method="GET">
+      <div class="mb-3">
+        <label for="parking" class="form-label">Parking</label>
+        <input type="text" class="form-control" id="parking" aria-describedby="Parking">
+      </div>
+      <div class="mb-3">
+        <label for="vote" class="form-label">Vote</label>
+        <input type="text" class="form-control" id="vote" aria-describedby="Vote">
+      </div>
+      <button type="submit" class="btn btn-warning">Submit</button>
+    </form>
+</div>
+
+
+
+<!-- TABELLA  -->
 <div class="container py-5">
     <table class="table bg-warning">
         <h1 class="text-center text-danger">Hotels</h1>
