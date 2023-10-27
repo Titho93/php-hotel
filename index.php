@@ -39,7 +39,16 @@ $hotels = [
     ],
 
 ];
+    $filteredHotels = [];
 
+    if(isset($_GET['parking'])){
+        foreach($hotels as $hotel)
+            if($hotel['parking']){
+                $filteredHotels[] = $hotel;
+            }
+    }else{
+        $filteredHotels = $hotels;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +64,7 @@ $hotels = [
 
 <!-- STAMPA SEMPLICE  -->
     <!-- <ul>
-        <?php foreach($hotels as $key => $hotel): ?>
+        <?php foreach($hotels as $hotel): ?>
         <li>
             <?php echo $hotel['name'] ?> -
             <?php echo $hotel['description'] ?> -
@@ -65,23 +74,6 @@ $hotels = [
         </li>
         <?php endforeach; ?>
     </ul> -->
-
-<!-- FORM  -->
-<div class="container py-5 ">
-    <form action="index.php" method="GET">
-      <div class="mb-3">
-        <label for="parking" class="form-label">Parking</label>
-        <input type="text" class="form-control" id="parking" aria-describedby="Parking">
-      </div>
-      <div class="mb-3">
-        <label for="vote" class="form-label">Vote</label>
-        <input type="text" class="form-control" id="vote" aria-describedby="Vote">
-      </div>
-      <button type="submit" class="btn btn-warning">Submit</button>
-    </form>
-</div>
-
-
 
 <!-- TABELLA  -->
 <div class="container py-5">
@@ -97,18 +89,30 @@ $hotels = [
             </tr>
         </thead>
         <tbody>
-        <?php foreach($hotels as $key => $hotel): ?>
+        <?php foreach($filteredHotels as $hotel): ?>
             <tr>
-            <td><?php echo $hotel['name'] ?></td>
-            <td><?php echo $hotel['description'] ?></td>
-            <td><?php echo ($hotel['parking'] === true) ? "yes" : "no"; ?></td>
-            <td><?php echo $hotel['vote'] ?></td>
-            <td><?php echo $hotel['distance_to_center'] ?> km</td>
+                <td><?php echo $hotel['name'] ?></td>
+                <td><?php echo $hotel['description'] ?></td>
+                <td><?php echo ($hotel['parking'] === true) ? "yes" : "no"; ?></td>
+                <td><?php echo $hotel['vote'] ?></td>
+                <td><?php echo $hotel['distance_to_center'] ?> km</td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
 
-</div>
+
+<!-- FORM  -->
+<div class="container py-5 ">
+    <form action="index.php" method="GET">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="parking" name="parking">
+        <label class="form-check-label" for="parking">
+        Parking
+        </label>
+    </div>
+    <button type="submit" class="btn btn-warning">Submit</button>
+    </form>
+</div>    
 </body>
 </html>
